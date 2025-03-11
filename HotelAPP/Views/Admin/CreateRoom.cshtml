@@ -1,0 +1,33 @@
+﻿@model HotelAPP.Models.Room
+
+@{
+    ViewData["Title"] = "CreateRoom";
+    Layout = "_LayoutAdmin";
+}
+
+
+<div class="row d-flex justify-content-center align-middle mt-5">
+    <div class="col-md-3">
+        <h1>Create a Room</h1>
+        <form asp-action="CreateRoom">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RoomNumber" class="control-label">Number</label>
+                <input asp-for="RoomNumber" class="form-control" />
+                <span asp-validation-for="RoomNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoomPrice" class="control-label">Price</label>
+                <input asp-for="RoomPrice" class="form-control" />
+                <span asp-validation-for="RoomPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-outline-success p-1 mt-2 w-100" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

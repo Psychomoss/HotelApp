@@ -1,0 +1,49 @@
+﻿@model HotelAPP.Models.Reservation
+@{
+    ViewData["Title"] = "Index";
+    var roomList = ViewData["RoomList"] as List<Room>;
+}
+
+
+
+<div class=" row d-flex justify-content-center align-middle mt-5">
+    <div class="col-md-3">
+        <h4>Create a Reservation</h4>
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RoomId" class="control-label"></label>
+                <select asp-for="RoomId"  class="form-control">
+                    @if (roomList != null && roomList.Count > 0)
+                    {
+                        foreach (var item in roomList)
+                        {
+                            <option value="@item.RoomNumber">№@item.RoomNumber Price: @item.RoomPrice$</option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="RoomId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EnterTime" class="control-label"></label>
+                <input asp-for="EnterTime" class="form-control" />
+                <span asp-validation-for="EnterTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExitTime" class="control-label"></label>
+                <input asp-for="ExitTime" class="form-control" />
+                <span asp-validation-for="ExitTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Reservation" class="btn btn-outline-success p-1 mt-2 w-100" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

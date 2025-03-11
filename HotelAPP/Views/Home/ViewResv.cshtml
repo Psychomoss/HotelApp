@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Reservations";
+}
+
+@model List<ResvDto>
+
+<h1>User Reservations</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Room Number</th>
+            <th>Room Price</th>
+            <th>Enter Time</th>
+            <th>Exit Time</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reservation in @Model)
+        {
+            <tr>
+                <td>@reservation.RoomNumber</td>
+                <td>@reservation.RoomPrice</td>
+                <td>@reservation.EnterTime</td>
+                <td>@reservation.ExitTime</td>
+                <td>
+                    <form asp-action="DeleteReservation" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@reservation.Id" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
