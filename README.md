@@ -1,2 +1,2 @@
 # HotelAPP
-A basic hotel reception application
+A hotel reception application
